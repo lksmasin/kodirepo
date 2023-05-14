@@ -1,2 +1,2 @@
 # kodirepo
-My own kodi repo with some my plugins.
+Které obsahuje nějaké mé (nebo mnou upravené) doplňky. 
