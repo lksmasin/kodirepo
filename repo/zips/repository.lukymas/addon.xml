@@ -4,7 +4,7 @@
         <dir>
             <info compressed="false">https://raw.githubusercontent.com/lksmasin/kodirepo/main/repo/zips/addons.xml</info>
             <checksum>https://raw.githubusercontent.com/lksmasin/kodirepo/main/repo/zips/addons.xml.md5</checksum>
-            <datadir zip="true">https://raw.githubusercontent.com/lksmasin/kodirepo/main/repo/zips/</datadir>
+            <datadir zip="true">https://lksmasin.github.io/kodirepo/repo/zips/</datadir>
         </dir>
     </extension>
     <extension point="xbmc.addon.metadata">
