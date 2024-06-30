@@ -1,3 +1,4 @@
-Vložit doplňky do složky ./repo 
-Spustit ./_repo_generator.py
-Ve složce ./repo/zips se vyzvoří potřebné soubory
+Vložit doplňky do složky /repo 
+Spustit /_repo_generator.py
+Ve složce /repo/zips se vyzvoří potřebné soubory
+Pak spustit bash soubor v /update-directory-index.sh
