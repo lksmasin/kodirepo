@@ -1,0 +1,384 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- <include name="submenu">
+		<content>
+			<item>
+				<label></label>
+				<onclick></onclick>
+				<thumb></thumb>
+			</item>
+		</content>
+	</include> -->
+
+<includes>
+	<include name="WidgetListMenu">
+		<param name="item_limit">$INFO[Container($PARAM[list_id]).NumItems]</param>
+		<param name="icon">$INFO[ListItem.Icon]</param>
+		<param name="icon_height">120</param>
+		<param name="visible">true</param>
+
+		<param name="SCMainMenu_submenu">false</param>
+		<param name="SCMoviesMenu_submenu">false</param>
+		<param name="SCTVShowsMenu_submenu">false</param>
+		<param name="SCTVMenu_submenu">false</param>
+		<param name="SCTraktMenu_submenu">false</param>
+		<param name="iVysilaniMenu_submenu">false</param>
+		<param name="RadiodeMenu_submenu">false</param>
+		<definition>
+			<include content="CategoryLabel">
+				<param name="label">$PARAM[widget_header]</param>
+				<param name="list_id" value="$PARAM[list_id]"/>
+				<param name="visible" value="$PARAM[visible]"/>
+			</include>
+			<include content="BusyListSpinner">
+				<param name="list_id" value="$PARAM[list_id]"/>
+				<param name="visible" value="$PARAM[visible]"/>
+			</include>
+			<control type="panel" id="$PARAM[list_id]">
+				<left>0</left>
+				<top>110</top>
+				<right>0</right>
+				<height>290</height>
+				<include content="WidgetListCommon">
+					<param name="list_id" value="$PARAM[list_id]"/>
+				</include>
+				<visible>$PARAM[visible]</visible>
+				<visible>Integer.IsGreater(Container($PARAM[list_id]).NumItems,0) | Container($PARAM[list_id]).IsUpdating</visible>
+				<itemlayout width="310" height="340">
+					<control type="group">
+						<left>70</left>
+						<control type="image">
+							<width>316</width>
+							<height>200</height>
+							<texture>dialogs/dialog-bg-nobo.png</texture>
+							<bordertexture border="21">overlays/shadow.png</bordertexture>
+							<bordersize>20</bordersize>
+						</control>
+						<control type="image">
+							<centertop>74</centertop>
+							<left>62</left>
+							<width>200</width>
+							<height>$PARAM[icon_height]</height>
+							<texture fallback="DefaultFolder.png">$PARAM[icon]</texture>
+							<aspectratio>keep</aspectratio>
+						</control>
+						<control type="textbox">
+							<left>42</left>
+							<top>106</top>
+							<width>240</width>
+							<height>70</height>
+							<label>$INFO[ListItem.Label]</label>
+							<font>font25_narrow</font>
+							<shadowcolor>text_shadow</shadowcolor>
+							<align>center</align>
+							<aligny>center</aligny>
+						</control>
+					</control>
+				</itemlayout>
+				<focusedlayout width="310" height="340">
+					<control type="group">
+						<depth>DepthContentPopout</depth>
+						<left>70</left>
+						<animation type="Focus">
+							<effect type="zoom" start="100" end="115" time="200" tween="sine" easing="inout" center="228,70" />
+						</animation>
+						<animation type="Unfocus">
+							<effect type="zoom" start="115" end="100" time="200" tween="sine" easing="inout" center="228,70" />
+						</animation>
+						<control type="image">
+							<width>316</width>
+							<height>200</height>
+							<texture>dialogs/dialog-bg-nobo.png</texture>
+							<bordertexture border="21">overlays/shadow.png</bordertexture>
+							<bordersize>20</bordersize>
+						</control>
+						<control type="image">
+							<width>316</width>
+							<height>200</height>
+							<texture colordiffuse="button_focus">colors/grey.png</texture>
+							<bordersize>20</bordersize>
+							<include>Animation_FocusTextureFade</include>
+						</control>
+						<control type="image">
+							<centertop>74</centertop>
+							<left>62</left>
+							<width>200</width>
+							<height>$PARAM[icon_height]</height>
+							<texture fallback="DefaultFolder.png">$PARAM[icon]</texture>
+							<aspectratio>keep</aspectratio>
+						</control>
+						<control type="textbox">
+							<left>42</left>
+							<top>106</top>
+							<width>240</width>
+							<height>70</height>
+							<label>$INFO[ListItem.Label]</label>
+							<font>font25_narrow</font>
+							<shadowcolor>text_shadow</shadowcolor>
+							<align>center</align>
+							<aligny>center</aligny>
+						</control>
+					</control>
+				</focusedlayout>
+				<include condition="$PARAM[SCMainMenu_submenu]">SCMainMenuContent</include>
+				<include condition="$PARAM[SCMoviesMenu_submenu]">SCMoviesMenuContent</include>
+				<include condition="$PARAM[SCTVShowsMenu_submenu]">SCTVShowsMenuContent</include>
+				<include condition="$PARAM[SCTVMenu_submenu]">SCTVMenuContent</include>
+				<include condition="$PARAM[SCTraktMenu_submenu]">SCTraktMenuContent</include>
+				<include condition="$PARAM[iVysilaniMenu_submenu]">iVysilaniMenuContent</include>
+				<include condition="$PARAM[RadiodeMenu_submenu]">RadiodeMenuContent</include>
+			</control>
+		</definition>
+	</include>
+	<include name="SCMainMenuContent">
+		<content>
+			<item>
+				<label>$LOCALIZE[90018]</label>
+				<onclick>ActivateWindow(10025,&quot;plugin://plugin.video.stream-cinema-2-release/download-queue/&quot;,return)</onclick>
+				<thumb>defaultaddonsrepo.png</thumb>
+			</item>
+			<item>				<!-- New Dubbed releases -->
+				<label>$LOCALIZE[90019]</label>
+				<onclick>ActivateWindow(10025, "plugin://plugin.video.stream-cinema-2-release/get_media/?media_type=movie&render_type=default&url=%252Fapi%252Fmedia%252Ffilter%252Fv2%252FnewsDubbed%253Ftype%253Dmovie%2526lang%253Dsk%2526lang%253Dcs%2526sort%253DlangDateAdded%2526order%253Ddesc%2526days%253D730%2526size%253D50", return)</onclick>
+				<thumb>icons/sc2/new_dub.png</thumb>
+			</item>
+			<item>				<!-- New Dubbed releases -->
+				<label>$LOCALIZE[90020]</label>
+				<onclick>ActivateWindow(10025, "plugin://plugin.video.stream-cinema-2-release/get_media/?media_type=tvshow&render_type=default&url=%252Fapi%252Fmedia%252Ffilter%252Fv2%252FnewsDubbed%253Ftype%253Dtvshow%2526lang%253Dsk%2526lang%253Dcs%2526sort%253DlangDateAdded%2526order%253Ddesc%2526days%253D730%2526size%253D50", return)</onclick>
+				<thumb>icons/sc2/new_dub.png</thumb>
+			</item>
+		</content>
+	</include>
+	<include name="SCMoviesMenuContent">
+		<content>
+			<item>				<!-- Popular -->
+				<label>$LOCALIZE[31183]</label>
+				<onclick>ActivateWindow(Videos,&quot;plugin://plugin.video.stream-cinema-2-release/get_media/?media_type=movie&amp;render_type=default&amp;url=%2fapi%2fmedia%2ffilter%2fall%3fsort%3dplayCount%26type%3dmovie%26order%3ddesc&quot;,return)</onclick>
+				<thumb>icons/sc2/popular.png</thumb>
+			</item>
+			<item>				<!-- New Releases -->
+				<label>$LOCALIZE[31395]</label>
+				<onclick>ActivateWindow(Videos,&quot;plugin://plugin.video.stream-cinema-2-release/get_media/?media_type=movie&amp;render_type=default&amp;url=%2fapi%2fmedia%2ffilter%2fall%3fsort%3dpremiered%26type%3dmovie%26order%3ddesc&quot;,return)</onclick>
+				<thumb>icons/sc2/new.png</thumb>
+			</item>
+			<item>				<!-- New Dubbed releases -->
+				<label>$LOCALIZE[31401]</label>
+				<onclick>ActivateWindow(Videos,&quot;plugin://plugin.video.stream-cinema-2-release/get_media/?media_type=movie&amp;render_type=default&amp;url=%2fapi%2fmedia%2ffilter%2fdubbed%3flang%3den%26lang%3dcs%26sort%3dpremiered%26type%3dmovie%26order%3ddesc&quot;,return)</onclick>
+				<thumb>icons/sc2/new_dub.png</thumb>
+			</item>
+			<item>				<!-- Recently added -->
+				<label>$LOCALIZE[31396]</label>
+				<onclick>ActivateWindow(Videos,&quot;plugin://plugin.video.stream-cinema-2-release/get_media/?media_type=movie&amp;render_type=default&amp;url=%2fapi%2fmedia%2ffilter%2fall%3fsort%3ddateAdded%26type%3dmovie%26order%3ddesc&quot;,return)</onclick>
+				<thumb>icons/sc2/recent.png</thumb>
+			</item>
+			<item>				<!-- Alphabetically -->
+				<label>$LOCALIZE[31303]</label>
+				<onclick>ActivateWindow(Videos,&quot;plugin://plugin.video.stream-cinema-2-release/a_to_z/?letter&amp;media_type=movie&quot;,return)</onclick>
+				<thumb>icons/sc2/az.png</thumb>
+			</item>
+			<item>				<!-- By genre -->
+				<label>$LOCALIZE[31305]</label>
+				<onclick>ActivateWindow(Videos,&quot;plugin://plugin.video.stream-cinema-2-release/genre_menu/?media_type=movie&quot;,return)</onclick>
+				<thumb>icons/sc2/genre.png</thumb>
+			</item>
+			<item>				<!-- By studio -->
+				<label>$LOCALIZE[31402]</label>
+				<onclick>ActivateWindow(Videos,&quot;plugin://plugin.video.stream-cinema-2-release/studio_menu/?media_type=movie&quot;,return)</onclick>
+				<thumb>icons/sc2/studio.png</thumb>
+			</item>
+			<item>				<!-- TV Picks of the day (CSFD.cz) -->
+				<label>$LOCALIZE[31403]</label>
+				<onclick>ActivateWindow(Videos,&quot;plugin://plugin.video.stream-cinema-2-release/csfd_tips/&quot;,return)</onclick>
+				<thumb>icons/sc2/csfd.png</thumb>
+			</item>
+
+		</content>
+	</include>
+	<include name="SCTVShowsMenuContent">
+		<content>
+			<item>				<!-- Popular -->
+				<label>$LOCALIZE[31183]</label>
+				<onclick>ActivateWindow(Videos,&quot;plugin://plugin.video.stream-cinema-2-release/get_media/?media_type=movie&amp;render_type=default&amp;url=%2fapi%2fmedia%2ffilter%2fall%3fsort%3dplayCount%26type%3dtvshow%26order%3ddesc&quot;,return)</onclick>
+				<thumb>icons/sc2/popular.png</thumb>
+			</item>
+			<item>				<!-- New Releases -->
+				<label>$LOCALIZE[31395]</label>
+				<onclick>ActivateWindow(Videos,&quot;plugin://plugin.video.stream-cinema-2-release/get_media/?media_type=movie&amp;render_type=default&amp;url=%2fapi%2fmedia%2ffilter%2fall%3fsort%3dpremiered%26type%3dtvshow%26order%3ddesc&quot;,return)</onclick>
+				<thumb>icons/sc2/new.png</thumb>
+			</item>
+			<item>				<!-- New Dubbed releases -->
+				<label>$LOCALIZE[31401]</label>
+				<onclick>ActivateWindow(Videos,&quot;plugin://plugin.video.stream-cinema-2-release/get_media/?media_type=movie&amp;render_type=default&amp;url=%2fapi%2fmedia%2ffilter%2fdubbed%3flang%3den%26lang%3den%26sort%3dpremiered%26type%3dtvshow%26order%3ddesc&quot;,return)</onclick>
+				<thumb>icons/sc2/new_dub.png</thumb>
+			</item>
+			<item>				<!-- Recently added -->
+				<label>$LOCALIZE[31396]</label>
+				<onclick>ActivateWindow(Videos,&quot;plugin://plugin.video.stream-cinema-2-release/get_media/?media_type=movie&amp;render_type=default&amp;url=%2fapi%2fmedia%2ffilter%2fall%3fsort%3ddateAdded%26type%3dtvshow%26order%3ddesc&quot;,return)</onclick>
+				<thumb>icons/sc2/recent.png</thumb>
+			</item>
+			<item>				<!-- Alphabetically -->
+				<label>$LOCALIZE[31303]</label>
+				<onclick>ActivateWindow(Videos,&quot;plugin://plugin.video.stream-cinema-2-release/a_to_z/?letter&amp;media_type=tvshow&quot;,return)</onclick>
+				<thumb>icons/sc2/az.png</thumb>
+			</item>
+			<item>				<!-- By genre -->
+				<label>$LOCALIZE[31305]</label>
+				<onclick>ActivateWindow(Videos,&quot;plugin://plugin.video.stream-cinema-2-release/genre_menu/?media_type=tvshow&quot;,return)</onclick>
+				<thumb>icons/sc2/genre.png</thumb>
+			</item>
+			<item>				<!-- By studio -->
+				<label>$LOCALIZE[31402]</label>
+				<onclick>ActivateWindow(Videos,&quot;plugin://plugin.video.stream-cinema-2-release/studio_menu/?media_type=tvshow&quot;,return)</onclick>
+				<thumb>icons/sc2/studio.png</thumb>
+			</item>
+		</content>
+	</include>
+	<include name="SCTraktMenuContent">
+    <content>
+        <!-- <item>
+            <label>$LOCALIZE[90021]</label>
+            <onclick>ActivateWindow(Videos,plugin://plugin.video.stream-cinema-2-release/trakt/list?id=watchlist&user=me,return)</onclick>
+            <thumb>defaultplaylist.png</thumb>
+        </item>
+        <item>
+            <label>$LOCALIZE[90022]</label>
+            <onclick>ActivateWindow(Videos,plugin://plugin.video.stream-cinema-2-release/trakt/histories?user=me,return)</onclick>
+            <thumb>icons/history.png</thumb>
+        </item> -->
+		<item>
+            <label>$LOCALIZE[90029]</label>
+            <onclick>ActivateWindow(10025,"plugin://plugin.video.stream-cinema-2-release/trakt/list?id=23394396&amp;user=adamosborne01",return)</onclick>
+            <thumb>defaultfavourites.png</thumb>
+        </item>
+		 <item>
+            <label>$LOCALIZE[90027]</label>
+            <onclick>ActivateWindow(10025,&quot;plugin://plugin.video.stream-cinema-2-release/trakt/list?id=20124699&amp;user=spell3ound&quot;,return)</onclick>
+            <thumb>defaultfavourites.png</thumb>
+        </item>
+        <item>
+            <label>$LOCALIZE[90023]</label>
+            <onclick>ActivateWindow(Videos,plugin://plugin.video.stream-cinema-2-release/trakt/friends?user=me,return)</onclick>
+            <thumb>defaultmusicroles.png</thumb>
+        </item>
+        <item>
+            <label>$LOCALIZE[90024]</label>
+            <onclick>ActivateWindow(Videos,plugin://plugin.video.stream-cinema-2-release/trakt/special-list?list_type=likes,return)</onclick>
+            <thumb>defaultmusictop100.png</thumb>
+        </item>
+        <item>
+            <label>$LOCALIZE[90025]</label>
+            <onclick>ActivateWindow(Videos,plugin://plugin.video.stream-cinema-2-release/trakt/special-list?list_type=popular,return)</onclick>
+            <thumb>defaultfavourites.png</thumb>
+        </item>
+       
+    </content>
+</include>
+	<include name="iVysilaniMenuContent">
+		<content>
+			<item>
+				<label>Živé vysílání</label>
+				<onclick>ActivateWindow(Videos,plugin://plugin.video.ivysilani.cz/?menu=live,return)</onclick>
+				<thumb>defaultaddonpvrclient.png</thumb>
+			</item>
+			<item>
+				<label>Podle data</label>
+				<onclick>ActivateWindow(Videos,plugin://plugin.video.ivysilani.cz/?menu=byDate,return)</onclick>
+				<thumb>defaultyear.png</thumb>
+			</item>
+			<item>
+				<label>Podle abecedy</label>
+				<onclick>ActivateWindow(Videos,plugin://plugin.video.ivysilani.cz/?menu=byLetter,return)</onclick>
+				<thumb>defaultmovietitle.png</thumb>
+			</item>
+			<item>
+				<label>Podle žánru</label>
+				<onclick>ActivateWindow(Videos,plugin://plugin.video.ivysilani.cz/?menu=byGenre,return)</onclick>
+				<thumb>defaultgenre.png</thumb>
+			</item>
+			<item>
+				<label>Tipy</label>
+				<onclick>ActivateWindow(Videos,plugin://plugin.video.ivysilani.cz/?menu=tipsMain,return)</onclick>
+				<thumb>defaultfavourites.png</thumb>
+			</item>
+			<item>
+				<label>Nejsledovanější dne</label>
+				<onclick>ActivateWindow(Videos,plugin://plugin.video.ivysilani.cz/?menu=topDay,return)</onclick>
+				<thumb>defaultmusictop100.png</thumb>
+			</item>
+			<item>
+				<label>Nejsledovanější týdne</label>
+				<onclick>ActivateWindow(Videos,plugin://plugin.video.ivysilani.cz/?menu=topWeek,return)</onclick>
+				<thumb>defaultmusictop100.png</thumb>
+			</item>
+			<item>
+				<label>Nepřehlédněte</label>
+				<onclick>ActivateWindow(Videos,plugin://plugin.video.ivysilani.cz/?menu=tipsNote,return)</onclick>
+				<thumb>defaulticonwarning.png</thumb>
+			</item>
+			<item>
+				<label>Z našeho archivu</label>
+				<onclick>ActivateWindow(Videos,plugin://plugin.video.ivysilani.cz/?menu=tipsArchive,return)</onclick>
+				<thumb></thumb>
+			</item>
+			<item>
+				<label>Ostatní právě sledují</label>
+				<onclick>ActivateWindow(Videos,plugin://plugin.video.ivysilani.cz/?menu=watching,return)</onclick>
+				<thumb>defaultinprogressshows.png</thumb>
+			</item>
+		</content>
+	</include>
+	<include name="RadiodeMenuContent">
+		<content>
+			<item>
+				<label>Local Stations</label>
+				<onclick>ActivateWindow(Music,plugin://plugin.audio.radio_de/stations/local/,return)</onclick>
+				<thumb>icons/sidemenu/radio.png</thumb>
+			</item>
+			<item>
+				<label>Editorials Recommendations</label>
+				<onclick>ActivateWindow(Music,plugin://plugin.audio.radio_de/stations/recommended/,return)</onclick>
+				<thumb>defaultmusicroles.png</thumb>
+			</item>
+			<item>
+				<label>Top 100 Stations</label>
+				<onclick>ActivateWindow(Music,plugin://plugin.audio.radio_de/stations/top/,return)</onclick>
+				<thumb>defaultmusictop100.png</thumb>
+			</item>
+			<item>
+				<label>Browse by genre</label>
+				<onclick>ActivateWindow(Music,plugin://plugin.audio.radio_de/stations/genre/,return)</onclick>
+				<thumb>defaultmusicgenres.png</thumb>
+			</item>
+			<item>
+				<label>Browse by topic</label>
+				<onclick>ActivateWindow(Music,plugin://plugin.audio.radio_de/stations/topic/,return)</onclick>
+				<thumb>defaultaddoninfoprovider.png</thumb>
+			</item>
+			<item>
+				<label>Browse by Country</label>
+				<onclick>ActivateWindow(Music,plugin://plugin.audio.radio_de/stations/country/,return)</onclick>
+				<thumb>defaultcountry.png</thumb>
+			</item>
+			<item>
+				<label>Browse by city</label>
+				<onclick>ActivateWindow(Music,plugin://plugin.audio.radio_de/stations/city/,return)</onclick>
+				<thumb>defaultaddonaudiodecoder.png</thumb>
+			</item>
+			<item>
+				<label>Browse by language</label>
+				<onclick>ActivateWindow(Music,plugin://plugin.audio.radio_de/stations/language/,return)</onclick>
+				<thumb>defaultcountry.png</thumb>
+			</item>
+			<item>
+				<label>Search for station</label>
+				<onclick>ActivateWindow(Music,plugin://plugin.audio.radio_de/stations/search/,return)</onclick>
+				<thumb>defaultmusicsearch.png</thumb>
+			</item>
+			<item>
+				<label>My Stations</label>
+				<onclick>ActivateWindow(Music,plugin://plugin.audio.radio_de/stations/my/,return)</onclick>
+				<thumb>defaultmusicplaylists.png</thumb>
+			</item>
+		</content>
+	</include>
+</includes>
