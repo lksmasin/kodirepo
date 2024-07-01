@@ -18,6 +18,7 @@
 		<param name="visible">true</param>
 
 		<param name="SCMainMenu_submenu">false</param>
+		<param name="PoslouchejRadiaMainMenu_submenu">false</param>
 		<param name="SCMoviesMenu_submenu">false</param>
 		<param name="SCTVShowsMenu_submenu">false</param>
 		<param name="SCTVMenu_submenu">false</param>
@@ -121,6 +122,7 @@
 					</control>
 				</focusedlayout>
 				<include condition="$PARAM[SCMainMenu_submenu]">SCMainMenuContent</include>
+				<include condition="$PARAM[PoslouchejRadiaMainMenu_submenu]">PoslouchejRadiaMainMenuContent</include> <!-- Poslouchej Radia -->
 				<include condition="$PARAM[SCMoviesMenu_submenu]">SCMoviesMenuContent</include>
 				<include condition="$PARAM[SCTVShowsMenu_submenu]">SCTVShowsMenuContent</include>
 				<include condition="$PARAM[SCTVMenu_submenu]">SCTVMenuContent</include>
@@ -144,6 +146,20 @@
 			</item>
 			<item>				<!-- New Dubbed releases -->
 				<label>$LOCALIZE[90020]</label>
+				<onclick>ActivateWindow(10025, "plugin://plugin.video.stream-cinema-2-release/get_media/?media_type=tvshow&render_type=default&url=%252Fapi%252Fmedia%252Ffilter%252Fv2%252FnewsDubbed%253Ftype%253Dtvshow%2526lang%253Dsk%2526lang%253Dcs%2526sort%253DlangDateAdded%2526order%253Ddesc%2526days%253D730%2526size%253D50", return)</onclick>
+				<thumb>icons/sc2/new_dub.png</thumb>
+			</item>
+		</content>
+	</include>
+	<include name="PoslouchejRadiaMainMenuContent">
+		<content>
+			<item>				<!-- New Dubbed releases -->
+				<label>Žánry</label>
+				<onclick>ActivateWindow(10025, "plugin://plugin.video.stream-cinema-2-release/get_media/?media_type=movie&render_type=default&url=%252Fapi%252Fmedia%252Ffilter%252Fv2%252FnewsDubbed%253Ftype%253Dmovie%2526lang%253Dsk%2526lang%253Dcs%2526sort%253DlangDateAdded%2526order%253Ddesc%2526days%253D730%2526size%253D50", return)</onclick>
+				<thumb>icons/sc2/new_dub.png</thumb>
+			</item>
+			<item>				<!-- New Dubbed releases -->
+				<label>Státy</label>
 				<onclick>ActivateWindow(10025, "plugin://plugin.video.stream-cinema-2-release/get_media/?media_type=tvshow&render_type=default&url=%252Fapi%252Fmedia%252Ffilter%252Fv2%252FnewsDubbed%253Ftype%253Dtvshow%2526lang%253Dsk%2526lang%253Dcs%2526sort%253DlangDateAdded%2526order%253Ddesc%2526days%253D730%2526size%253D50", return)</onclick>
 				<thumb>icons/sc2/new_dub.png</thumb>
 			</item>
@@ -272,7 +288,7 @@
         </item>
        
     </content>
-</include>
+	</include>
 	<include name="iVysilaniMenuContent">
 		<content>
 			<item>

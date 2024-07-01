@@ -29,48 +29,8 @@
 				<width>100%</width>
 				<height>100%</height>
 				<aspectratio>keep</aspectratio>
-				<texture>special://skin/media/startup/splash-1.png</texture>
-				<animation effect="rotate" center="auto" time="3000" start="100" end="250" loop="true" condition="true" >Conditional</animation>
-			</control>
-			<control type="image">
-				<depth>DepthBackground</depth>
-				<include>FullScreenDimensions</include>
-				<centertop>50%</centertop>
-				<width>100%</width>
-				<height>100%</height>
-				<aspectratio>keep</aspectratio>
-				<texture>special://skin/media/startup/splash-1.png</texture>
-				<animation effect="rotate" center="auto" time="100000" start="160" end="0" loop="true" condition="true" >Conditional</animation>
-			</control>
-			<control type="image">
-				<depth>DepthBackground</depth>
-				<include>FullScreenDimensions</include>
-				<centertop>50%</centertop>
-				<width>100%</width>
-				<height>100%</height>
-				<aspectratio>keep</aspectratio>
 				<texture>special://skin/media/startup/splash-2.png</texture>
 				<animation effect="rotate" center="auto" time="3000" start="360" end="0" loop="true" condition="true" >Conditional</animation>
-			</control>
-			<control type="image">
-				<depth>DepthBackground</depth>
-				<include>FullScreenDimensions</include>
-				<centertop>50%</centertop>
-				<width>100%</width>
-				<height>100%</height>
-				<aspectratio>keep</aspectratio>
-				<texture>special://skin/media/startup/splash-3.png</texture>
-				<animation effect="rotate" center="auto" time="6000" start="360" end="0" loop="true" condition="true" >Conditional</animation>
-			</control>
-			<control type="image">
-				<depth>DepthBackground</depth>
-				<include>FullScreenDimensions</include>
-				<centertop>50%</centertop>
-				<width>100%</width>
-				<height>100%</height>
-				<aspectratio>keep</aspectratio>
-				<texture>special://skin/media/startup/splash-4.png</texture>
-				<animation effect="rotate" center="auto" time="100000" start="0" end="260" loop="true" condition="true" >Conditional</animation>
 			</control>
 	</controls>
 </window>

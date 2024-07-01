@@ -452,6 +452,7 @@
 		<param name="pvr_type">TV</param>
 		<param name="visible">true</param>
 		<param name="SCMainMenu_submenu">false</param>		<!-- Easy/SC+ SC Main Menu -->
+		<param name="PoslouchejRadiaMainMenu_submenu">false</param>		<!-- RADIA -->
 		<param name="SCMoviesMenu_submenu">false</param>		<!-- Easy/SC+ SC Movies Menu -->
 		<param name="SCTVShowsMenu_submenu">false</param>		<!-- Easy/SC+ SC TVShows Menu -->
 		<param name="SCTVMenu_submenu">false</param>		<!-- Easy/SC+ SC TV Menu -->
@@ -570,6 +571,9 @@
 				<!-- Easy/SC+ SC Main Menu -->
 				<include condition="$PARAM[SCMainMenu_submenu]">SCMainMenuContent</include>
 				<!-- Easy/SC+ SC Movies Menu -->
+				<include condition="$PARAM[SCMainMenu_submenu]">PoslouchejRadiaMainMenuContent</include>
+				<!-- Radia? -->
+
 				<include condition="$PARAM[SCMoviesMenu_submenu]">SCMoviesMenuContent</include>
 				<!-- Easy/SC+ SC TVShows Menu -->
 				<include condition="$PARAM[SCTVShowsMenu_submenu]">SCTVShowsMenuContent</include>
