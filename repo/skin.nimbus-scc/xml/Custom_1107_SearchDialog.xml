@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window type="dialog" id="1107">
+	<defaultcontrol always="true">9000</defaultcontrol>
+	<include>Animation_DialogPopupOpenClose</include>
+	<controls>
+		<control type="group">
+			<centerleft>50%</centerleft>
+			<width>400</width>
+			<centertop>50%</centertop>
+			<height>400</height>
+			<include content="DialogBackgroundCommons">
+				<param name="width" value="800" />
+				<param name="height" value="800" />
+				<param name="header_label" value="" />
+				<param name="header_id" value="" />
+			</include>
+			<control type="panel" id="9000">
+				<include>ButtonMenuList</include>
+				<content>
+					<item>
+						<label>Hledat na SCC</label>
+						<onclick>Dialog.Close(all)</onclick>
+						<onclick>PlayMedia("plugin://plugin.video.stream-cinema-2-release/command/?command=search",return)</onclick>
+						<onclick>ActivateWindow(10025,plugin://plugin.video.stream-cinema-2-release/,return)</onclick>
+					</item>
+				</content>
+			</control>
+		</control>
+	</controls>
+</window>
