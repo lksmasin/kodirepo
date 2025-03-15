@@ -1,29 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
   <include name="Custom1Widgets">
-    <include content="WidgetListPoster">
-      <param name="content_path" value="plugin://plugin.video.stream-cinema-2-release/continue_watching?"/>
-      <param name="widget_header" value="Pokračovat ve sledování"/>
-      <param name="widget_target" value="videos"/>
-      <param name="list_id" value="23011"/>
-    </include>
-    <include content="WidgetListPoster">
-      <param name="content_path" value="plugin://plugin.video.stream-cinema-2-release/get_media/?media_type=movie&amp;render_type=default&amp;url=%252Fapi%252Fmedia%252Ffilter%252Fv2%252Fall%253Ftype%253Dmovie%2526sort%253Dtrending%2526order%253Ddesc%2526size%253D50"/>
-      <param name="widget_header" value="Filmy | Trendy"/>
-      <param name="widget_target" value="videos"/>
-      <param name="list_id" value="23012"/>
-    </include>
-    <include content="WidgetListPoster">
-      <param name="content_path" value="plugin://plugin.video.stream-cinema-2-release/get_media/?media_type=tvshow&amp;render_type=default&amp;url=%252Fapi%252Fmedia%252Ffilter%252Fv2%252Fall%253Ftype%253Dtvshow%2526sort%253Dtrending%2526order%253Ddesc%2526size%253D50"/>
-      <param name="widget_header" value="Seriály | Trendy"/>
-      <param name="widget_target" value="videos"/>
-      <param name="list_id" value="23013"/>
-    </include>
-    <include content="WidgetListPoster">
-      <param name="content_path" value="plugin://plugin.video.stream-cinema-2-release/search_history/?"/>
-      <param name="widget_header" value="Historie hledání"/>
-      <param name="widget_target" value="videos"/>
-      <param name="list_id" value="23014"/>
-    </include>
   </include>
 </includes>

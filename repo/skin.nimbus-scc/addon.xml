@@ -3,7 +3,6 @@
 	provider-name="Ivar Brandt">
 	<requires>
 		<import addon="xbmc.gui" version="5.17.0" />
-		<import addon="script.nimbus.helper" version="0.0.50"/>
 	</requires>
 	<extension point="xbmc.gui.skin" debugging="false">
 		<res width="1920" height="1440" aspect="4:3" default="false" folder="xml" />

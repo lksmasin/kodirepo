@@ -1,11 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
   <include name="Custom3Widgets">
-    <include content="WidgetListCategory">
-      <param name="content_path" value="plugin://plugin.video.stream-cinema-2-release/thematic_lists?"/>
-      <param name="widget_header" value="Tematické seznamy"/>
-      <param name="widget_target" value="videos"/>
-      <param name="list_id" value="25011"/>
-    </include>
   </include>
 </includes>

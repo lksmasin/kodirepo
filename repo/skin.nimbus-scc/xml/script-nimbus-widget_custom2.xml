@@ -1,23 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
   <include name="Custom2Widgets">
-    <include content="WidgetListPoster">
-      <param name="content_path" value="plugin://plugin.video.stream-cinema-2-release/trakt/list?user=me&amp;id=watchlist"/>
-      <param name="widget_header" value="Seznam k zhlédnutí"/>
-      <param name="widget_target" value="videos"/>
-      <param name="list_id" value="24011"/>
-    </include>
-    <include content="WidgetListPoster">
-      <param name="content_path" value="plugin://plugin.video.stream-cinema-2-release/trakt/history?user=me&amp;hist_type=watched&amp;media=movies"/>
-      <param name="widget_header" value="Zhlédnuté filmy"/>
-      <param name="widget_target" value="videos"/>
-      <param name="list_id" value="24012"/>
-    </include>
-    <include content="WidgetListPoster">
-      <param name="content_path" value="plugin://plugin.video.stream-cinema-2-release/trakt/history?user=me&amp;hist_type=watched&amp;media=shows"/>
-      <param name="widget_header" value="Zhlédnuté seriály"/>
-      <param name="widget_target" value="videos"/>
-      <param name="list_id" value="24013"/>
-    </include>
   </include>
 </includes>
