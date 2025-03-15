@@ -38,7 +38,7 @@
         <description lang="en_NZ">Nimbus Helper for the Nimbus Skin.</description>
         <description lang="en_US">Nimbus Helper for the Nimbus Skin.</description>
     </extension>
-</addon><addon id="skin.nimbus-scc" version="0.1.37" name="Nimbus SCC" provider-name="Ivar Brandt, LUKYMAS">
+</addon><addon id="skin.nimbus-scc" version="1" name="Nimbus SCC" provider-name="Ivar Brandt, LUKYMAS">
 	<requires>
 		<import addon="xbmc.gui" version="5.17.0" />
 	</requires>
