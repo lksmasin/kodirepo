@@ -178,6 +178,13 @@
 					<selected>!Skin.HasSetting(HomeMenuNoVideosButton)</selected>
 					<onclick>Skin.ToggleSetting(HomeMenuNoVideosButton)</onclick>
 				</control>
+					<!-- favorites menu -->
+				<control type="radiobutton" id="6300">
+					<label>Oblíbené</label>
+					<include>DefaultSettingButton</include>
+					<selected>!Skin.HasSetting(HomeMenuNoFavoritesButton)</selected>
+					<onclick>Skin.ToggleSetting(HomeMenuNoFavoritesButton)</onclick>
+				</control>
 				<!-- games -->
 				<control type="radiobutton" id="6297">
 					<label>$LOCALIZE[15016]</label>
