@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <addon id="skin.nimbus-scc" version="0.1.37" name="Nimbus SCC"
-	provider-name="Ivar Brandt">
+	provider-name="Ivar Brandt, LUKYMAS">
 	<requires>
 		<import addon="xbmc.gui" version="5.17.0" />
 	</requires>
