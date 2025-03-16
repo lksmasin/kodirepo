@@ -10,7 +10,7 @@
 			<centerleft>50%</centerleft>
 			<width>1200</width>
 			<include content="DialogBackgroundCommons">
-				<param name="header_label" value="Welcome to Nimbus" />
+				<param name="header_label" value="Vítej v Nimbus SCC editu" />
 				<param name="header_id" value="1" />
 			</include>
 			<control type="textbox" id="9">
@@ -20,7 +20,7 @@
 				<height>1000</height>
 				<textcolor>darkgrey</textcolor>
 				<font>font32_title</font>
-				<label>Nimbus is a light artwork centric skin that can be customized to suit various tastes.[CR][CR]After clicking OK on the button below, navigate to skin settings to set up main menu items/widgets and configure the skin to your likings. Every setting has a small help text at the bottom of the screen to help you understand how it works and what the setting does. You'll find other settings/config toggles in the View options panel in video windows.[CR][CR]Aside from setting the view type, there you can customize artwork style, clearlogo and artwork used. Please note that the views are auto locking so whenever you set a view it will be locked for the content type that you see in the View options panel.[CR][CR]Also, feel free to set different artwork/options for different content types (movies,tvshows) etc as Nimbus will remember your preferences for each content type in the video windows and home screen.[CR][CR]If you need to access this welcome screen again, you may do so in Skin settings » Extras.</label>
+				<label>Nimbus vytvořil Ivar Brandt.[CR][CR]Upravil LUKYMAS za účelem integrace doplňku Stream Cinema Community.[CR][CR]Nedoporučuji upravovat nastavení skinu. Byl vytvořen pouze pro jednoduché používání SCC proto tady nenajdeš jiné KODI funkce.[CR][CR]Budu se snažit skin dále aktualizovat a vylepšovat.[CR][CR]Pokud budeš mít problém kontaktuj mě na mail@lukymas.eu.org nebo vytvoř issue v mém github repositáři "kodirepo" kde mimochodem najdeš i source kód.</label>
 				<autoscroll time="3000" delay="4000" repeat="5000">true</autoscroll>
 			</control>
 			<control type="button" id="100">

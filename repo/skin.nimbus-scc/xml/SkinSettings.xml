@@ -642,7 +642,7 @@
 					<label>Enable persistent home screen artwork</label>
 					<include>DefaultSettingButton</include>
 					<onclick>Skin.ToggleSetting(Disable.PersistentArtwork)</onclick>
-					<selected>!Skin.HasSetting(Disable.PersistentArtwork)</selected>
+					<selected>Skin.HasSetting(Disable.PersistentArtwork)</selected>
 				</control>
 				<control type="button" id="6014">
 					<label>$LOCALIZE[31131]</label>

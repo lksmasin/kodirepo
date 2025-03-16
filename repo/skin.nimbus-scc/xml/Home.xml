@@ -18,6 +18,9 @@
 			<onclick>noop</onclick>
 			<visible allowhiddenfocus="true">Control.HasFocus(20001)</visible>
 		</control>
+		<!-- SCC úpravy zde-->
+		<!-- Tady se přidavá menu položka pokud se má zobrazovat obrázek na pozadí -->
+		<!-- Přidáno custom4 (menu kategorie) -->
 		<include>DefaultBackground</include>
 		<control type="group">
 			<visible>
@@ -38,6 +41,10 @@
 					[
 						String.IsEqual(Container(9000).ListItem.Property(id),custom3) + 
 						[!String.IsEmpty(Window(Home).Property(nimbus_custom3_first_widget)) | !String.IsEmpty(Window(Home).Property(NimbusInitialStartup_custom3))]
+					] | 
+					[
+						String.IsEqual(Container(9000).ListItem.Property(id),custom4) + 
+						[!String.IsEmpty(Window(Home).Property(nimbus_custom4_first_widget)) | !String.IsEmpty(Window(Home).Property(NimbusInitialStartup_custom3))]
 					]
 				]
 			</visible>
@@ -165,7 +172,9 @@
 						<param name="scrollbar_id" value="22099"/>
 					</include>
 				</control>
-				<!-- CUSTOM 1 -->
+
+				<!-- SCC ÚPRAVY ZAČÍNAJÍ ZDE-->
+				<!-- Domů widget -->
 				<control type="group" id="23000">
 					<visible>String.IsEqual(Container(9000).ListItem.Property(id),custom1)</visible>
 					<include content="Visible_Right_Delayed">
@@ -185,18 +194,6 @@
 							<param name="list_id" value="23011"/>
 						</include>
 						<include content="WidgetListPoster">
-							<param name="content_path" value="plugin://plugin.video.stream-cinema-2-release/get_media/?media_type=movie&amp;render_type=default&amp;url=%252Fapi%252Fmedia%252Ffilter%252Fv2%252Fall%253Ftype%253Dmovie%2526sort%253Dtrending%2526order%253Ddesc%2526size%253D50"/>
-							<param name="widget_header" value="Filmy | Trendy"/>
-							<param name="widget_target" value="videos"/>
-							<param name="list_id" value="23012"/>
-						</include>
-						<include content="WidgetListPoster">
-							<param name="content_path" value="plugin://plugin.video.stream-cinema-2-release/get_media/?media_type=tvshow&amp;render_type=default&amp;url=%2Fapi%2Fmedia%2Ffilter%2Fv2%2Fall%3Ftype%3Dtvshow%26sort%3Dtrending%26order%3Ddesc%26size%3D50;,return"/>
-							<param name="widget_header" value="Seriály | Trendy"/>
-							<param name="widget_target" value="videos"/>
-							<param name="list_id" value="23013"/>
-						</include>
-						<include content="WidgetListPoster">
 							<param name="content_path" value="plugin://plugin.video.stream-cinema-2-release/watched/; ,return" />
 							<param name="widget_header" value="Historie sledování"/>
 							<param name="widget_target" value="videos"/>
@@ -213,7 +210,7 @@
 						<param name="scrollbar_id" value="23099"/>
 					</include>
 				</control>
-				<!-- CUSTOM 2 -->
+				<!-- Trakt widget -->
 				<control type="group" id="24000">
 					<visible>String.IsEqual(Container(9000).ListItem.Property(id),custom2)</visible>
 					<include content="Visible_Right_Delayed">
@@ -225,7 +222,7 @@
 						</include>
 						<include>WidgetGroupListCommon</include>
 						<pagecontrol>24099</pagecontrol>
-						<include content="Custom2Widgets" condition="!Skin.HasSetting(HomeMenuNoCustom2Button)" />
+						<include content="Custom2Widgets" />
 						<include content="WidgetListPoster">
 							<param name="content_path" value="plugin://plugin.video.stream-cinema-2-release/trakt/list?user=me&amp;id=watchlist"/>
 							<param name="widget_header" value="Seznam k zhlédnutí"/>
@@ -234,7 +231,7 @@
 						</include>
 						<include content="WidgetListPoster">
 							<param name="content_path" value="plugin://plugin.video.stream-cinema-2-release/trakt/history?hist_type=watched&amp;media=shows&amp;user=me"/>
-							<param name="widget_header" value="$LOCALIZE[90011]"/>
+							<param name="widget_header" value="Zhlédnuté seriály"/>
 							<param name="widget_target" value="videos"/>
 							<param name="list_id" value="24012"/>
 							<param name="sortby" value="played"/>
@@ -243,7 +240,7 @@
 						</include>
 						<include content="WidgetListPoster">
 							<param name="content_path" value="plugin://plugin.video.stream-cinema-2-release/trakt/history?hist_type=watched&amp;media=movies&amp;user=me"/>
-							<param name="widget_header" value="$LOCALIZE[90012]"/>
+							<param name="widget_header" value="Zhlédnuté filmy"/>
 							<param name="widget_target" value="videos"/>
 							<param name="list_id" value="24013"/>
 							<param name="sortby" value="played"/>
@@ -258,15 +255,68 @@
 						<param name="scrollbar_id" value="24099"/>
 					</include>
 				</control>
-				<!-- CUSTOM 3 -->
-				<control type="group" id="25000">
+				<!-- Doporučení widget -->
+				<control type="group" id="26000">
 					<visible>String.IsEqual(Container(9000).ListItem.Property(id),custom3)</visible>
 					<include content="Visible_Right_Delayed">
 						<param name="id" value="custom3"/>
 					</include>
-					<control type="grouplist" id="25001">
+					<control type="grouplist" id="26001">
 						<include content="Animation_Widget_Poster_Slide">
-							<param name="container" value="25001" />
+							<param name="container" value="26001" />
+						</include>
+						<include>WidgetGroupListCommon</include>
+						<pagecontrol>26099</pagecontrol>
+						<include content="WidgetListPoster">
+							<param name="content_path" value="plugin://plugin.video.stream-cinema-2-release/get_media/?media_type=movie&amp;render_type=default&amp;url=%252Fapi%252Fmedia%252Ffilter%252Fv2%252Fall%253Ftype%253Dmovie%2526sort%253Dtrending%2526order%253Ddesc%2526size%253D50"/>
+							<param name="widget_header" value="Filmy Trendy"/>
+							<param name="widget_target" value="videos"/>
+							<param name="list_id" value="26011"/>
+						</include>
+						<include content="WidgetListPoster">
+							<param name="content_path" value="plugin://plugin.video.stream-cinema-2-release/get_media/?media_type=tvshow&amp;render_type=default&amp;url=%2Fapi%2Fmedia%2Ffilter%2Fv2%2Fall%3Ftype%3Dtvshow%26sort%3Dtrending%26order%3Ddesc%26size%3D50"/>
+							<param name="widget_header" value="Seriály Trendy"/>
+							<param name="widget_target" value="videos"/>
+							<param name="list_id" value="26012"/>
+						</include>
+						<include content="WidgetListPoster">
+							<param name="content_path" value="plugin://plugin.video.stream-cinema-2-release/get_media/?media_type=movie&amp;render_type=default&amp;url=%252Fapi%252Fmedia%252Ffilter%252Fv2%252Fall%253Ftype%253Dmovie%2526sort%253Dnewest%2526order%253Ddesc%2526size%253D50"/>
+							<param name="widget_header" value="Nejnovější filmy"/>
+							<param name="widget_target" value="videos"/>
+							<param name="list_id" value="26013"/>
+						</include>
+						<include content="WidgetListPoster">
+							<param name="content_path" value="plugin://plugin.video.stream-cinema-2-release/get_media/?media_type=tvshow&amp;render_type=default&amp;url=%2Fapi%2Fmedia%2Ffilter%2Fv2%2Fall%3Ftype%3Dtvshow%26sort%3Dnewest%26order%3Ddesc%26size%3D50"/>
+							<param name="widget_header" value="Nejnovější seriály"/>
+							<param name="widget_target" value="videos"/>
+							<param name="list_id" value="26014"/>
+						</include>
+						<include content="WidgetListPoster">
+							<param name="content_path" value="plugin://plugin.video.stream-cinema-2-release/csfd_tips/;,return"/>
+							<param name="widget_header" value="ČSFD tipy"/>
+							<param name="widget_target" value="videos"/>
+							<param name="list_id" value="26015"/>
+							<param name="sortby" value="played"/>
+							<param name="sortorder" value="ascending"/>
+							<param name="stream-cinema" value="true"/>
+						</include>
+					</control>
+					<include content="WidgetUpDownArrows">
+						<param name="container_id" value="26001" />
+					</include>
+					<include content="WidgetScrollbar" condition="Skin.HasSetting(touchmode)">
+						<param name="scrollbar_id" value="26099"/>
+					</include>
+				</control>
+				<!-- Kategorie widget -->
+				<control type="group" id="27000">
+					<visible>String.IsEqual(Container(9000).ListItem.Property(id),custom4)</visible>
+					<include content="Visible_Right_Delayed">
+						<param name="id" value="custom4"/>
+					</include>
+					<control type="grouplist" id="27001">
+						<include content="Animation_Widget_Poster_Slide">
+							<param name="container" value="27001" />
 						</include>
 						<include>WidgetGroupListCommon</include>
 						<pagecontrol>25099</pagecontrol>
@@ -275,16 +325,30 @@
 							<param name="content_path" value="plugin://plugin.video.stream-cinema-2-release/thematic_lists?"/>
 							<param name="widget_header" value="Tematické seznamy"/>
 							<param name="widget_target" value="videos"/>  
-							<param name="list_id" value="25011"/>
+							<param name="list_id" value="27011"/>
+						</include>
+						<include content="WidgetListCategory">
+							<param name="content_path" value="plugin://plugin.video.stream-cinema-2-release/genres?media_type=movie"/>
+							<param name="widget_header" value="Žánry filmů"/>
+							<param name="widget_target" value="videos"/>
+							<param name="list_id" value="27012"/>
+						</include>
+						<include content="WidgetListCategory">
+							<param name="content_path" value="plugin://plugin.video.stream-cinema-2-release/genres?media_type=tvshow"/>
+							<param name="widget_header" value="Žánry seriálů"/>
+							<param name="widget_target" value="videos"/>
+							<param name="list_id" value="27013"/>
 						</include>
 					</control>
 					<include content="WidgetUpDownArrows">
-						<param name="container_id" value="25001" />
+						<param name="container_id" value="27001" />
 					</include>
 					<include content="WidgetScrollbar" condition="Skin.HasSetting(touchmode)">
-						<param name="scrollbar_id" value="25099"/>
+						<param name="scrollbar_id" value="27099"/>
 					</include>
 				</control>
+				<!-- ÚPRAVY KONEC -->
+
 				<control type="group" id="7000">
 					<visible>String.IsEqual(Container(9000).ListItem.Property(id),music)</visible>
 					<include content="Visible_Right_Delayed">
@@ -996,19 +1060,6 @@
 			<include content="TopBar">
 				<param name="breadcrumbs_label" value="" />
 			</include>
-			<!-- <control type="textbox" id="9999">
-				<include>MainMenuAnimations</include>
-				<left>50</left>
-				<top>200</top>
-				<width>1500</width>
-				<height>1000</height>
-				<font>font12</font>
-				<textcolor>FFFFFFFF</textcolor>
-				<label>Movies: $INFO[Window(Home).Property(NimbusInitialStartup_movies)][CR]TVShows: $INFO[Window(Home).Property(NimbusInitialStartup_tvshows)][CR]Custom 1:$INFO[Window(Home).Property(NimbusInitialStartup_custom1)][CR]Custom 2:$INFO[Window(Home).Property(NimbusInitialStartup_custom2)][CR]Custom 3:$INFO[Window(Home).Property(NimbusInitialStartup_custom3)][CR]Music: $INFO[Window(Home).Property(NimbusInitialStartup_music)][CR]Music Videos: $INFO[Window(Home).Property(NimbusInitialStartup_musicvideos)][CR]Live TV: $INFO[Window(Home).Property(NimbusInitialStartup_livetv)][CR]Radio: $INFO[Window(Home).Property(NimbusInitialStartup_radio)][CR]Addons: $INFO[Window(Home).Property(NimbusInitialStartup_addons)][CR]Pictures: $INFO[Window(Home).Property(NimbusInitialStartup_pictures)][CR]Videos: $INFO[Window(Home).Property(NimbusInitialStartup_videos)][CR]Games: $INFO[Window(Home).Property(NimbusInitialStartup_games)][CR]Weather: $INFO[Window(Home).Property(NimbusInitialStartup_weather)]</label>
-				<label>Movies: $INFO[Window(Home).Property(nimbus_movies_first_widget)][CR]TVShows: $INFO[Window(Home).Property(nimbus_tvshows_first_widget)][CR]Custom 1:$INFO[Window(Home).Property(nimbus_custom1_first_widget)][CR]Custom 2:$INFO[Window(Home).Property(nimbus_custom2_first_widget)][CR]Custom 3:$INFO[Window(Home).Property(nimbus_custom3_first_widget)][CR]Music: $INFO[Window(Home).Property(nimbus_music_first_widget)][CR]Music Videos: $INFO[Window(Home).Property(nimbus_musicvideos_first_widget)][CR]Live TV: $INFO[Window(Home).Property(nimbus_livetv_first_widget)][CR]Radio: $INFO[Window(Home).Property(nimbus_radio_first_widget)][CR]Addons: $INFO[Window(Home).Property(nimbus_addons_first_widget)][CR]Pictures: $INFO[Window(Home).Property(nimbus_pictures_first_widget)][CR]Videos: $INFO[Window(Home).Property(nimbus_videos_first_widget)][CR]Games: $INFO[Window(Home).Property(nimbus_games_first_widget)][CR]Weather: $INFO[Window(Home).Property(nimbus_weather_first_widget)]</label>
-				<visible>true</visible>
-			</control> -->
-			<!-- <include>BottomBar</include> -->
 			<control type="group">
 				<depth>DepthContentPanel</depth>
 				<control type="group">
@@ -1040,6 +1091,7 @@
 						<onunfocus condition="ControlGroup(2000).HasFocus + String.IsEqual(Container(9000).ListItem.Property(id),custom1)">ClearProperty(nimbus_custom1_first_widget,home)</onunfocus>
 						<onunfocus condition="ControlGroup(2000).HasFocus + String.IsEqual(Container(9000).ListItem.Property(id),custom2)">ClearProperty(nimbus_custom2_first_widget,home)</onunfocus>
 						<onunfocus condition="ControlGroup(2000).HasFocus + String.IsEqual(Container(9000).ListItem.Property(id),custom3)">ClearProperty(nimbus_custom3_first_widget,home)</onunfocus>
+						<onunfocus condition="ControlGroup(2000).HasFocus + String.IsEqual(Container(9000).ListItem.Property(id),custom4)">ClearProperty(nimbus_custom4_first_widget,home)</onunfocus>
 						<onfocus>ClearProperty(nimbus_saved_list_id,home)</onfocus>
 						<onfocus>ClearProperty(listposition,home)</onfocus>
 						<onright>SetFocus($INFO[Container(9000).ListItem.Property(menu_id)])</onright>
@@ -1051,34 +1103,44 @@
               <param name="id" value="9000" />
             </include>
 						<content>
-								<!-- SCC -->
+								<!-- SCC ÚPRAVY ZAČÍNAJÍ ZDE-->
+								<!-- Domů menu-->
 								<item>
-									<label>SCC</label>
+									<label>Domů</label>
 									<onclick>ActivateWindow(Videos,plugin://plugin.video.stream-cinema-2-release,return)</onclick>
 									<property name="menu_id">$NUMBER[23000]</property>
 									<property name="id">custom1</property>
 								</item>
-								<!-- Trakt -->
+								<!-- Trakt menu-->
 								<item>
 									<label>Trakt</label>
 									<onclick>ActivateWindow(Videos,plugin://plugin.video.stream-cinema-2-release/trakt/lists?user=me,return)</onclick>
 									<property name="menu_id">$NUMBER[24000]</property>
 									<property name="id">custom2</property>
 								</item>
-								<!-- Témata -->
+								<!-- Doporučení menu-->
 								<item>
-									<label>Témata</label>
-									<onclick>ActivateWindow(Videos,plugin://plugin.video.stream-cinema-2-release/thematic_lists?,return)</onclick>
-									<property name="menu_id">$NUMBER[25000]</property>
+									<label>Doporučení</label>
+									<onclick>ActivateWindow(Videos,plugin://plugin.video.stream-cinema-2-release/get_media/?media_type=movie,return)</onclick>
+									<property name="menu_id">$NUMBER[26000]</property>
 									<property name="id">custom3</property>
 								</item>
-								<!-- Oblíbené -->
+								<!-- Kategorie menu-->
+								<item>
+									<label>Kategorie</label>
+									<onclick>ActivateWindow(Videos,plugin://plugin.video.stream-cinema-2-release/thematic_lists?,return)</onclick>
+									<property name="menu_id">$NUMBER[27000]</property>
+									<property name="id">custom4</property>
+								</item>
+								<!-- Oblíbené menu-->
 								<item>
 									<label>Oblíbené</label>
-									<onclick>ActivateWindow(Favourites)</onclick>
+									<onclick>ActivateWindow(favouritesbrowser)</onclick>
 									<property name="menu_id">$NUMBER[14000]</property>
 									<property name="id">favorites</property>
+									<visible>!Skin.HasSetting(HomeMenuNoFavButton)</visible>
 								</item>
+								<!-- ÚPRAVY KONEC -->
 						</content>
 					</control>
 					<control type="group">
