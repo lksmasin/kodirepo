@@ -1,7 +1,8 @@
 # Toto je LUKYMAS repository
 
 ## Instalace:
-[Stáhni repozitář kliknutím na mě.](repo/zips/repository.lukymas/repository.lukymas-1.zip)
+[Stáhni repozitář kliknutím na mě.](repo/zips/repository.lukymas/repository.lukymas-1.4.zip)
+nebo přidej jako zdroj "https://lksmasin.github.io/kodirepo/repo/zips/repository.lukymas/"
 
 1. Stáhni si repozitář (.zip soubor) víše.
 2. Otevři Kodi a přejdi do nastavení (ozubené kolečko) dále Doplňky, Instalace ze souboru zip.
